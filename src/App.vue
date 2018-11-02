@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="app">
-    <form-add />
+    <form-add @add="addElement"/>
   </div>
 </template>
 
@@ -11,6 +11,27 @@ export default {
   name: 'app',
   components: {
     FormAdd
+  },
+  data () {
+    return {
+      products: []
+    }
+  },
+  methods: {
+    addElement (data) {
+      this.products.push(data)
+      localStorage.setItem('products', JSON.stringify(this.products))
+    }
+  },
+  mounted () {
+    const products = localStorage.getItem('products')
+    if (!products) {
+      localStorage.setItem('products', '[]')
+      this.products = []
+    } else {
+      this.products = JSON.parse(products)
+    }
+    console.log(this.products)
   }
 }
 </script>

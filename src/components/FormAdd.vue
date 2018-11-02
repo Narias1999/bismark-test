@@ -35,6 +35,13 @@
           description: this.description
         }
         this.$emit('add', elementToAdd)
+        this.resetForm()
+      },
+      resetForm() {
+        this.name = ''
+        this.price = ''
+        this.quantity = ''
+        this.description = ''
       }
     }
   }

@@ -1,16 +1,19 @@
 <template>
   <div id="app" class="app">
     <form-add @add="addElement"/>
+    <bismark-table :products="products" />
   </div>
 </template>
 
 <script>
 import FormAdd from './components/FormAdd.vue'
+import BismarkTable from './components/Table.vue'
 
 export default {
   name: 'app',
   components: {
-    FormAdd
+    FormAdd,
+    BismarkTable
   },
   data () {
     return {
@@ -31,7 +34,6 @@ export default {
     } else {
       this.products = JSON.parse(products)
     }
-    console.log(this.products)
   }
 }
 </script>
@@ -39,6 +41,8 @@ export default {
 <style>
   :root {
     --primary: #3498db;
+    --error: #e74c3c;
+    --error-light: #ec1313;
   }
   * {
     font-family: Arial, Helvetica, sans-serif;

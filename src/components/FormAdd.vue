@@ -29,6 +29,7 @@
     methods: {
       add () {
         const elementToAdd = {
+          id: (new Date()).getTime(),
           name: this.name,
           price: this.price,
           quantity: this.quantity,
@@ -52,7 +53,7 @@
     width: 100%;
   }
   .container {
-    width: 50%;
+    width: 60%;
   }
   input, textarea {
     padding: 5px;
@@ -84,10 +85,10 @@
     padding: 10px 20px;
     cursor: pointer;
     transition: .4s;
-    box-shadow: 2px 2px 3px #555;
+    box-shadow: 2px 2px 5px #999;
   }
   button:hover {
-    box-shadow: 2px 2px 5px #999;
+    box-shadow: 2px 2px 3px #555;
   }
   @media only screen and (max-width: 900px) {
     .container {

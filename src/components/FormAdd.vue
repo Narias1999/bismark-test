@@ -1,15 +1,15 @@
 <template>
-  <form class="form-add">
+  <form class="form-add" @submit.prevent="add">
     <div class="container">
       <h2>Nuevo producto</h2>
       <div class="row">
-        <input type="text" class="name" v-model="name" placeholder="Nombre" />
-        <input type="number" class="others" v-model="price" placeholder="Precio" />
-        <input type="number" class="others" v-model="quantity" placeholder="Cantidad" />
+        <input type="text" required class="name" v-model="name" placeholder="Nombre" />
+        <input type="number" required class="others" v-model="price" placeholder="Precio" />
+        <input type="number" required class="others" v-model="quantity" placeholder="Cantidad" />
       </div>
       <div class="row">
         <textarea v-model="description" placeholder="Descripción"></textarea>
-        <button @click.prevent="add" >Agregar</button>
+        <input type="submit" value="Agregar" class="btn" />
       </div>
     </div>
   </form>
@@ -28,15 +28,15 @@
     },
     methods: {
       add () {
-        const elementToAdd = {
-          id: (new Date()).getTime(),
-          name: this.name,
-          price: this.price,
-          quantity: this.quantity,
-          description: this.description
-        }
-        this.$emit('add', elementToAdd)
-        this.resetForm()
+          const elementToAdd = {
+            id: (new Date()).getTime(),
+            name: this.name,
+            price: this.price,
+            quantity: this.quantity,
+            description: this.description
+          }
+          this.$emit('add', elementToAdd)
+          this.resetForm()
       },
       resetForm() {
         this.name = ''
@@ -51,6 +51,7 @@
 <style scoped>
   form {
     width: 100%;
+    padding-bottom: 20px;
   }
   .container {
     width: 60%;
@@ -76,7 +77,7 @@
     margin-right: 15px;
     height: 80px;
   }
-  button {
+  .btn {
     background: var(--primary);
     outline: none;
     color: #fff;
@@ -85,12 +86,13 @@
     padding: 10px 20px;
     cursor: pointer;
     transition: .4s;
+    border-radius: 3px;
     box-shadow: 2px 2px 5px #999;
   }
-  button:hover {
+  .btn:hover {
     box-shadow: 2px 2px 3px #555;
   }
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 850px) {
     .container {
       width: 100%;
     }
@@ -99,7 +101,7 @@
     .row:last-child {
       flex-direction: column;
     }
-    button {
+    .btn {
       margin-top: 10px;
       width: 100%;
     }

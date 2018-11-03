@@ -16,7 +16,8 @@ const filterArray = (arr, keyword) => arr.filter(product => {
   // validate if at least one key of the object (less the id), match with the keyword
   for (const key in product) {
     if (key != 'id') {
-      if (product[key].toLowerCase().search(keyword) !== -1) {
+      const string = `${product[key]}`
+      if (string.toLowerCase().search(keyword) !== -1) {
         match = true
         break
       }

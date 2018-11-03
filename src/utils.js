@@ -2,7 +2,7 @@
  * Put currency format to a String
  * @param {String} price 
  */
-const formatCurrency = price => price.replace(/(?<!^)\d{3}/g, match => '.' + match)
+const formatCurrency = price => price.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 
 /**
  * Filter an array of objects
